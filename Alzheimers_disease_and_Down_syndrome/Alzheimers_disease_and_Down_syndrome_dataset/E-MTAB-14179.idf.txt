@@ -1,0 +1,38 @@
+Comment[ArrayExpressAccession]	E-MTAB-14179
+MAGE-TAB Version	1.1
+Comment[Submitted Name]	Bulk RNA-seq of sporadic Alzheimer's disease and Down syndrome with Alzheimer's disease brain tissue for prefrontal cortex and cerebellum				
+Investigation Title	Bulk RNA-seq of sporadic Alzheimer's disease and Down syndrome with Alzheimer's disease brain tissue for prefrontal cortex and cerebellum
+Experiment Description	Cognitively normal brains are compared to sporadic AD and Down syndrome brains with AD for comparison of two different forms of Alzheimer's disease
+Experimental Design	sex design	disease state design	genotype design
+Experimental Design Term Source REF	EFO	EFO	EFO
+Experimental Design Term Accession Number	EFO:0001752	EFO:0001756	EFO:0001748
+Experimental Factor Name	disease	sex
+Experimental Factor Type	disease	sex
+Experimental Factor Term Source REF	EFO	EFO
+Experimental Factor Term Accession Number	EFO_0000408	PATO_0000047
+Person Last Name	Thorwald	Higuchi-Sanabria
+Person First Name	Max	Ryo
+Person Mid Initials	A.
+Person Email	thorwald@usc.edu	ryo.sanabria@usc.edu
+Person Phone	9256400021
+Person Fax
+Person Address	3715 McClintock Ave Room 313D	3715 McClintock Ave
+Person Affiliation	The University of Southern California Leonard Davis School of Gerontology	The University of Southern California Leonard Davis School of Gerontology
+Person Roles	submitter	investigator
+Date of Experiment	2024-06-04
+Public Release Date	2024-06-30
+Protocol Name	P-MTAB-144448	P-MTAB-144449	P-MTAB-144450	P-MTAB-144451	P-MTAB-144452
+Protocol Type	sample collection protocol	nucleic acid extraction protocol	nucleic acid library construction protocol	nucleic acid sequencing protocol	normalization data transformation protocol
+Protocol Term Source REF	EFO	EFO	EFO	EFO	EFO
+Protocol Term Accession Number	EFO_0005518	EFO_0002944	EFO_0004184	EFO_0004170	EFO_0003816
+Protocol Description	Tissues were received from NIH brain banks from postmortem individuals. Diagnoses were assigned by a pathologist. 	20mg of brain tissue was homogenized in TRIzol reagent using a BeadBug Benchtop Homogenizer. Brain tissue was suspended in 1 mL of TRIzol and homogenized for 6 rounds of 10 s homogenization and 60 s holds between each round. 300 µL of chloroform was added to the sample and aqueous separation of RNA was performed using centrifugation in a heavy gel phase-lock tube (VWR, 10847-802). The aqueous phase was applied to a standard column-based RNA purification kit (Quantabio, Extracta Plus, Cat# 95214-050) following the manufacturer’s protocol. 	Preparation of libraries for sequencing was handled by Novogene. 	RNA sequencing was performed by Novogene. Reads from samples with were processed using trim_galore (0.6.5-1) and mapped to the GRCh38.p14 genome with STAR-2.7.10a. Mapped reads were counted to genes using featureCounts (Subread-2.0.3) and the GRCh38.108 GTF file. Unwanted noise and artifacts were removed using svaseq and removeBatchEffects from the sva package-3.42.0 and differential expression analysis was performed with DESeq2-1.34.0 using R-4.3.2. 	Reads from samples with were processed using trim_galore (0.6.5-1) and mapped to the GRCh38.p14 genome with STAR-2.7.10a. Mapped reads were counted to genes using featureCounts (Subread-2.0.3) and the GRCh38.108 GTF file. Unwanted noise and artifacts were removed using svaseq and removeBatchEffects from the sva package-3.42.0 and differential expression analysis was performed with DESeq2-1.34.0 using R-4.3.2.
+Protocol Hardware	N/A	BeadBug Benchtop homogenizer	N/A	Illumina HiSeq 4000	N/A
+Protocol Software					R-4.3.2
+Term Source Name	EFO
+Term Source File	http://www.ebi.ac.uk/efo/
+Term Source Version
+Comment[AEExperimentType]	RNA-seq of coding RNA
+Comment[TemplateType]	Human - High-throughput sequencing
+Comment[SecondaryAccession]	ERP161086
+Comment[SequenceDataURI]	http://www.ebi.ac.uk/ena/data/view/ERR13257749-ERR13257749	http://www.ebi.ac.uk/ena/data/view/ERR13257749-ERR13257750	http://www.ebi.ac.uk/ena/data/view/ERR13257750-ERR13257751	http://www.ebi.ac.uk/ena/data/view/ERR13257751-ERR13257752	http://www.ebi.ac.uk/ena/data/view/ERR13257752-ERR13257753	http://www.ebi.ac.uk/ena/data/view/ERR13257753-ERR13257754	http://www.ebi.ac.uk/ena/data/view/ERR13257754-ERR13257755	http://www.ebi.ac.uk/ena/data/view/ERR13257755-ERR13257756	http://www.ebi.ac.uk/ena/data/view/ERR13257756-ERR13257757	http://www.ebi.ac.uk/ena/data/view/ERR13257757-ERR13257758	http://www.ebi.ac.uk/ena/data/view/ERR13257758-ERR13257759	http://www.ebi.ac.uk/ena/data/view/ERR13257759-ERR13257760	http://www.ebi.ac.uk/ena/data/view/ERR13257760-ERR13257761	http://www.ebi.ac.uk/ena/data/view/ERR13257761-ERR13257762	http://www.ebi.ac.uk/ena/data/view/ERR13257762-ERR13257763	http://www.ebi.ac.uk/ena/data/view/ERR13257763-ERR13257764	http://www.ebi.ac.uk/ena/data/view/ERR13257764-ERR13257765	http://www.ebi.ac.uk/ena/data/view/ERR13257765-ERR13257766	http://www.ebi.ac.uk/ena/data/view/ERR13257766-ERR13257767	http://www.ebi.ac.uk/ena/data/view/ERR13257767-ERR13257768	http://www.ebi.ac.uk/ena/data/view/ERR13257768-ERR13257769	http://www.ebi.ac.uk/ena/data/view/ERR13257769-ERR13257770	http://www.ebi.ac.uk/ena/data/view/ERR13257770-ERR13257771	http://www.ebi.ac.uk/ena/data/view/ERR13257771-ERR13257772	http://www.ebi.ac.uk/ena/data/view/ERR13257772-ERR13257773	http://www.ebi.ac.uk/ena/data/view/ERR13257773-ERR13257774	http://www.ebi.ac.uk/ena/data/view/ERR13257774-ERR13257775	http://www.ebi.ac.uk/ena/data/view/ERR13257775-ERR13257776	http://www.ebi.ac.uk/ena/data/view/ERR13257776-ERR13257777	http://www.ebi.ac.uk/ena/data/view/ERR13257777-ERR13257778	http://www.ebi.ac.uk/ena/data/view/ERR13257778-ERR13257779	http://www.ebi.ac.uk/ena/data/view/ERR13257779-ERR13257780	http://www.ebi.ac.uk/ena/data/view/ERR13257780-ERR13257781	http://www.ebi.ac.uk/ena/data/view/ERR13257781-ERR13257782	http://www.ebi.ac.uk/ena/data/view/ERR13257782-ERR13257783	http://www.ebi.ac.uk/ena/data/view/ERR13257783-ERR13257784	http://www.ebi.ac.uk/ena/data/view/ERR13257784-ERR13257785	http://www.ebi.ac.uk/ena/data/view/ERR13257785-ERR13257786	http://www.ebi.ac.uk/ena/data/view/ERR13257786-ERR13257787	http://www.ebi.ac.uk/ena/data/view/ERR13257787-ERR13257788	http://www.ebi.ac.uk/ena/data/view/ERR13257788-ERR13257789	http://www.ebi.ac.uk/ena/data/view/ERR13257789-ERR13257790	http://www.ebi.ac.uk/ena/data/view/ERR13257790-ERR13257790
+SDRF File	E-MTAB-14179.sdrf.txt

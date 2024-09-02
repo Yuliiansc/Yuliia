@@ -1,0 +1,180 @@
+---
+title: "Alzheimer's_disease_and_Down_syndrome"
+author: "Yuliia Babkova"
+date: "2024-09-01"
+output: html_document
+
+
+#Introduction
+##DS-AD stands for "Down syndrome-associated Alzheimer's disease." This term refers to the development of Alzheimer's disease (AD) in individuals with Down syndrome (DS). People with Down syndrome have a higher risk of developing Alzheimer's disease due to the presence of an extra copy of chromosome 21, which carries the gene for amyloid precursor protein (APP). The overexpression of this gene leads to an increased production of amyloid-beta, a key protein involved in the formation of amyloid plaques, a hallmark of Alzheimer's disease. As a result, many individuals with Down syndrome develop Alzheimer's disease at an earlier age compared to the general population. The study of DS-AD is important for understanding both the unique aspects of Alzheimer's disease in Down syndrome and the general mechanisms of Alzheimer's disease in the broader population. This research can provide insights into potential therapeutic targets and preventive strategies.
+
+##Overview of analysis
+##The goal of the study "Bulk RNA-seq of sporadic Alzheimer's disease and Down syndrome with Alzheimer's disease brain tissue for prefrontal cortex and cerebellum" is to identify and analyze differential gene expression patterns in the brain tissues of individuals with sporadic Alzheimer's disease (AD) and Down syndrome-associated Alzheimer's disease (DS-AD). By focusing on the prefrontal cortex and cerebellum, the research aims to uncover the molecular mechanisms and pathways involved in the progression of Alzheimer's in these specific brain regions, which are critical for understanding the disease's impact on cognitive functions. This investigation seeks to contribute to the identification of potential biomarkers and therapeutic targets that could aid in the development of effective treatments for both sporadic AD and DS-AD.
+
+#Analysis
+####Import and Data (More Explanation to be Added)
+Here is a description of the variables:
+  ---------------| ---------------------------------------------------------------------------
+`ID`                     | Identification
+`link to article`        | https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-14179?query=E-MTAB-14179 
+`Organism`               | Homo Sapiens 
+`M/F`                    | Gender (M if Male, F if Female)
+`Age`                    | 49-99years 
+`Disease, syndrome`      | Down syndrome-associated Alzheimer's disease
+`Number of participants` | 42
+`Number of samples`      | 84 
+`organism part`          | Cerebellum,Prefrontal Cortex 
+`Extract Name`           | CTL 1 Cbl, CTL 1 Ctx, CTL 2 Cbl
+`Material Type`          | RNA
+`Assay Name`             | Sequencing assay
+`Technology Type`        | RNA-Seq 
+`Derived Array Data File`| DSAD-ApoE125_readcounts.txt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup, include=FALSE}
+# Loading necessary libraries
+if(!require(plyr)) install.packages("plyr")
+if(!require(corrplot)) install.packages("corrplot")
+if(!require(caret)) install.packages("caret")
+if(!require(caretEnsemble)) install.packages("caretEnsemble")
+if(!require(ggplot2)) install.packages("ggplot2")
+if(!require(dplyr)) install.packages("dplyr")
+if(!require(randomForest)) install.packages("randomForest")
+if(!require(xgboost)) install.packages("xgboost")
+
+# Loading libraries
+library(plyr)
+library(corrplot)
+library(caret)
+library(caretEnsemble)
+library(ggplot2)
+library(dplyr)
+library(randomForest)
+library(xgboost)
+
+getwd()
+```
+
+```{r}
+library(dplyr)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+metadata <- read.delim("Alzheimers_disease_and_Down_syndrome_dataset/E-MTAB-14179.sdrf.txt", sep = "\t", fill = TRUE)
+
+head(metadata)
+str(metadata)
+summary(metadata)
+
+# Filter metadata for samples with "Alzheimer's disease" and age greater than 70
+filtered_metadata <- subset(metadata, Factor.Value.disease. == "Alzheimer's disease" & Characteristics.age. > 70)
+
+head(filtered_metadata)
+summary(filtered_metadata)
+
+# Load the expression data
+expression_data <- read.delim("Alzheimers_disease_and_Down_syndrome_dataset/DSAD-ApoE125_readcounts_fixed.txt", sep = "\t", header = TRUE)
+
+# Inspect the expression data
+head(expression_data)
+str(expression_data)
+
+
+
+```
+```{r}
+
+
+library(dplyr)
+
+
+metadata_raw <- read.table("Alzheimers_disease_and_Down_syndrome_dataset/E-MTAB-14179.idf.txt", sep = "\t", fill = TRUE, header = FALSE, quote = "")
+
+
+head(metadata_raw, 20)
+
+
+metadata_raw <- as_tibble(metadata_raw)
+
+
+metadata_filtered <- metadata_raw %>% 
+  filter(grepl("Experimental Design", V1, ignore.case = TRUE))
+
+
+print(metadata_filtered)
+
+
+str(metadata_filtered)
+
+
+```
+
+
+```{r}
+library(readr)
+library(dplyr)
+
+# Load the data
+data <- read_delim("Alzheimers_disease_and_Down_syndrome_dataset/DSAD-ApoE125_readcounts_fixed.txt", delim="\t", skip=1)
+
+# Inspect the structure and column names
+str(data)
+colnames(data)
+
+# Since 'Chr', 'Start', 'End', and 'Length' do not exist in the dataset, 
+
+data <- data %>%
+  mutate(
+    Chr = as.numeric(gsub(";", "", ENSG00000160072)),  # Replace with actual logic for 'Chr'
+    Start = as.numeric(1),  # Placeholder value, replace with actual logic for 'Start'
+    End = as.numeric(1000001),  # Placeholder value, replace with actual logic for 'End'
+    Length = End - Start  # Assuming Length is calculated as 'End - Start'
+  )
+
+# Filter data for chromosome 1 and position greater than 1,000,000
+filtered_data <- data %>%
+  filter(Chr == 1 & Start > 1000000)
+
+# Inspect the filtered data
+head(filtered_data)
+
+# Filter data for rows where 'Length' is greater than 1000
+filtered_data <- data %>%
+  filter(Length > 1000)
+
+missing_values_summary <- filtered_data %>%
+  summarise(across(everything(), ~sum(is.na(.))))
+
+print(missing_values_summary)
+
+# Save the filtered data to a new file
+write_delim(filtered_data, "filtered_data.txt", delim = "\t")
+
+
+```
+
+```{r}
+
+
+
+```
+
+```{r}
+
+
+```
+
+```{r}
+
+
+
+```
+
+```{r}
+
+
+```
